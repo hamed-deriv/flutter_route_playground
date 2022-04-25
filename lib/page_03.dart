@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Page02 extends StatelessWidget {
-  const Page02({Key? key}) : super(key: key);
+import 'package:flutter_route_playground/home_page.dart';
+
+class Page03 extends StatelessWidget {
+  static const routeName = 'third_page';
+
+  const Page03({required this.data, Key? key}) : super(key: key);
+
+  final Map<String, dynamic> data;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -10,14 +16,19 @@ class Page02 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Page 03',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              Text(
+                data['data'],
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 32),
               TextButton(
                 child: const Text('Go to First Page'),
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  HomePage.routeName,
+                  arguments: {'data': 'Hello from Page 03!'},
+                ),
               )
             ],
           ),

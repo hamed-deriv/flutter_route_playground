@@ -7,6 +7,8 @@ class HomePage extends StatefulWidget {
 
   final String title;
 
+  static const String routeName = 'home_page';
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -18,12 +20,11 @@ class _HomePageState extends State<HomePage> {
         body: Center(
           child: TextButton(
             child: const Text('Go to Page 01'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Page01()),
-              );
-            },
+            onPressed: () => Navigator.pushNamed(
+              context,
+              Page01.routeName,
+              arguments: {'data': 'Hello from Home Page!'},
+            ),
           ),
         ),
       );
